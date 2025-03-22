@@ -13,10 +13,10 @@ public class PaymentFlightPassengerEntity {
     private String codePaymentFlightPassenger;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_flight_fk",  referencedColumnName = "codeFlightFk" )
+    @JoinColumn(name = "code_flight_fk",  referencedColumnName = "code_flight" )
     private FlightEntity codeFlightFk;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_passenger_fk",  referencedColumnName = "codePassengerFk" )
+    @JoinColumn(name = "code_passenger_fk",  referencedColumnName = "code_passenger" )
     private PassengerEntity codePassengerFk;
 }

@@ -16,7 +16,7 @@ public class ServiceEntity {
     private String nameService;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_service_type_fk",  referencedColumnName = "codeServiceTypeFk" )
+    @JoinColumn(name = "code_service_type_fk",  referencedColumnName = "code_service_type" )
     private ServiceTypeEntity codeServiceTypeFk;
 
     @Column(name = "value_service")

@@ -21,7 +21,7 @@ public class PromotionEntity {
     private String valuePromotion;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "promotion_type_fk",  referencedColumnName = "codePromotionTypeFk" )
+    @JoinColumn(name = "promotion_type_fk",  referencedColumnName = "code_promotion_type" )
     private PromotionTypeEntity codePromotionTypeFk;
 
 }

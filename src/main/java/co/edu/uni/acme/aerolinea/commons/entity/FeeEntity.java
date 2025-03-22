@@ -13,7 +13,7 @@ public class FeeEntity {
     private String codeFee;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_fee_type_fk", referencedColumnName = "codeFeeType")
+    @JoinColumn(name = "code_fee_type_fk", referencedColumnName = "code_fee_type")
     private FeeTypeEntity nameFeeType;
 
 }

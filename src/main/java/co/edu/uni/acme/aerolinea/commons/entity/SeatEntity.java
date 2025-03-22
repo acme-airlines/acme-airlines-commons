@@ -13,7 +13,7 @@ public class SeatEntity {
     private String codeSeat;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_type_service_fk",  referencedColumnName = "codeTypeSeatFk" )
+    @JoinColumn(name = "code_type_service_fk",  referencedColumnName = "code_seat_type" )
     private SeatTypeEntity codeTypeSeatFk;
 
     @Column(name = "number_seat")

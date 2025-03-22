@@ -13,11 +13,11 @@ public class PromotionPassengerEntity {
     private String codePromotionPassenger;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_passenger_fk",  referencedColumnName = "codePassengerFk" )
+    @JoinColumn(name = "code_passenger_fk",  referencedColumnName = "code_passenger" )
     private PassengerEntity codePassengerFk;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_promotion_fk",  referencedColumnName = "codePromotionFk" )
+    @JoinColumn(name = "code_promotion_fk",  referencedColumnName = "code_promotion" )
         private PromotionEntity codePromotionFk;
 
 

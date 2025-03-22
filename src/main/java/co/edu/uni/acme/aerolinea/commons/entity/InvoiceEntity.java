@@ -16,7 +16,7 @@ public class InvoiceEntity {
     private String descriptionInvoice;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_payment_fk",  referencedColumnName = "codePaymentFk" )
+    @JoinColumn(name = "code_payment_fk",  referencedColumnName = "code_payment" )
     private PaymentEntity codePaymentFk;
 
     @Column(name = "url_invoice")

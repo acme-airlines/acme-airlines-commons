@@ -24,7 +24,7 @@ public class PassengerEntity {
     private String phonePassenger;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "document_type_passenger",  referencedColumnName = "codeTypeDocument" )
+    @JoinColumn(name = "document_type_passenger",  referencedColumnName = "code_document_type" )
     private DocumentTypeEntity documentTypePassengerFk;
 
     @Column(name = "number_document_passenger")

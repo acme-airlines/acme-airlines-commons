@@ -13,11 +13,11 @@ public class ServiceFlightExtraEntity {
     private String codeServiceFlightExtra;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_service_fk",  referencedColumnName = "codeServiceFk" )
+    @JoinColumn(name = "code_service_fk",  referencedColumnName = "code_service" )
     private ServiceEntity codeServiceFk;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_flight_fk",  referencedColumnName = "codeFlightFk" )
+    @JoinColumn(name = "code_flight_fk",  referencedColumnName = "code_flight" )
     private FlightEntity codeFlightFk;
 
     @Column(name = "status")
