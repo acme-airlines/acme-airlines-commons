@@ -17,8 +17,8 @@ public class ResourceServerConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/passenger/**").permitAll()
-                       // .requestMatchers(HttpMethod.GET, "/login/**").hasAnyAuthority("SCOPE_read","SCOPE_write")
+                        .requestMatchers("/public/**").permitAll()
+                        .requestMatchers("/secure/**").hasAnyAuthority("SCOPE_paggener")
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer((oauth2) -> oauth2.jwt(Customizer.withDefaults()));
