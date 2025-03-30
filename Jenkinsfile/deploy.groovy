@@ -5,7 +5,7 @@ pipeline {
     // Se obtienen las credenciales de GitHub desde el almacén de credenciales de Jenkins
     GITHUB_TOKEN = credentials('github-token')
     GITHUB_USERNAME = credentials('github-username')
-    // Actualiza OWNER/REPO por tu repositorio real, por ejemplo: "acme-airlines/acme-airlines-commons"
+    // Usar solo "owner/repo" sin la parte de URL ni la extensión .git
     GITHUB_REPO = "acme-airlines/acme-airlines-commons"
   }
   
@@ -60,7 +60,7 @@ EOF
           env.NEW_VERSION = "${major}.${minor}.${patch}"
           echo "New version is ${env.NEW_VERSION}"
         }
-        // Configurar git y hacer push del tag usando las credenciales
+        // Configurar git y hacer push del tag usando las credenciales en la URL
         sh '''
           git config user.email "mariafvn0127@gmail.com"
           git config user.name "MariaFernanda1818"
