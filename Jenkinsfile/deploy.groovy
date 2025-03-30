@@ -19,6 +19,22 @@ pipeline {
   }
 
   stages {
+    stage('Check Commit Message') {
+      steps {
+        script {
+          // Obtener el mensaje del último commit
+          def commitMessage = sh(script: "git log -1 --pretty=%B", returnStdout: true).trim()
+          echo "Commit message: ${commitMessage}"
+          // Si el mensaje contiene [ci skip], se detiene el pipeline
+          if (commitMessage.contains("[ci skip]")) {
+            echo "Skipping build triggered by a [ci skip] commit."
+            currentBuild.result = 'SUCCESS'
+            error("Build skipped due to [ci skip] in commit message")
+          }
+        }
+      }
+    }
+
     stage('Checkout Source Code') {
       steps {
         checkout scm
@@ -76,7 +92,7 @@ EOF
           }
           echo "New version is ${env.NEW_VERSION}"
         }
-        // Configurar git y empujar el tag con credenciales incluidas en la URL
+        // Configurar git y empujar el tag con credenciales en la URL
         sh '''
           git config user.email "mariafvn0127@gmail.com"
           git config user.name "MariaFernanda1818"
@@ -97,7 +113,7 @@ EOF
           mvn versions:set -DnewVersion=${NEW_VERSION} -DgenerateBackupPoms=false
           
           git add pom.xml
-          git commit -m "Set version to ${NEW_VERSION}" || echo "No changes to commit"
+          git commit -m "Set version to ${NEW_VERSION} [ci skip]" || echo "No changes to commit"
           git push https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git main
         '''
       }
@@ -134,7 +150,7 @@ EOF
           git checkout main
           git pull --rebase https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git main
           git add pom.xml
-          git commit -m "Set version to ${NEW_VERSION}" || echo "No changes to commit"
+          git commit -m "Set version to ${NEW_VERSION} [ci skip]" || echo "No changes to commit"
           git push https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git main
         '''
       }
