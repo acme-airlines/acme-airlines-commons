@@ -92,8 +92,9 @@ EOF
           # Actualizar el pom.xml sin generar archivos de backup
           mvn versions:set -DnewVersion=${NEW_VERSION} -DgenerateBackupPoms=false
           
-          # Asegurarse de estar en la rama principal
+          # Asegurarse de estar en la rama principal y actualizarla con los cambios remotos
           git checkout main
+          git pull --rebase https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git main
           
           git add pom.xml
           git commit -m "Set version to ${NEW_VERSION}" || echo "No changes to commit"
@@ -131,6 +132,7 @@ EOF
           git config user.email "mariafvn0127@gmail.com"
           git config user.name "MariaFernanda1818"
           git checkout main
+          git pull --rebase https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git main
           git add pom.xml
           git commit -m "Set version to ${NEW_VERSION}" || echo "No changes to commit"
           git push https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git main
