@@ -5,7 +5,7 @@ pipeline {
     // Se obtienen las credenciales de GitHub desde el almacén de credenciales de Jenkins
     GITHUB_TOKEN = credentials('github-token')
     GITHUB_USERNAME = credentials('github-username')
-    // Usar solo "owner/repo" sin la parte de URL ni la extensión .git
+    // Repositorio real: owner/repo
     GITHUB_REPO = "acme-airlines/acme-airlines-commons"
   }
   
@@ -50,7 +50,10 @@ EOF
       steps {
         script {
           // Leer la versión actual del pom.xml y aumentar el número de parche
-          def currentVersion = sh(script: "grep -m 1 '<version>' pom.xml | sed 's/.*<version>\\([^<]*\\)<\\/version>.*/\\1/'", returnStdout: true).trim()
+          def currentVersion = sh(
+            script: "grep -m 1 '<version>' pom.xml | sed 's/.*<version>\\([^<]*\\)<\\/version>.*/\\1/'",
+            returnStdout: true
+          ).trim()
           echo "Current version: ${currentVersion}"
           def parts = currentVersion.tokenize('.')
           def major = parts[0] as int
@@ -58,6 +61,12 @@ EOF
           def patch = parts[2] as int
           patch = patch + 1
           env.NEW_VERSION = "${major}.${minor}.${patch}"
+          
+          // Mientras el tag exista, incrementar el parche
+          while (sh(script: "git tag -l ${env.NEW_VERSION}", returnStdout: true).trim()) {
+            patch = patch + 1
+            env.NEW_VERSION = "${major}.${minor}.${patch}"
+          }
           echo "New version is ${env.NEW_VERSION}"
         }
         // Configurar git y hacer push del tag usando las credenciales en la URL
