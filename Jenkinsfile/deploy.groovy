@@ -5,8 +5,8 @@ pipeline {
     // Se obtienen las credenciales de GitHub desde el almacén de credenciales de Jenkins
     GITHUB_TOKEN = credentials('github-token')
     GITHUB_USERNAME = credentials('github-username')
-    // Para este ejemplo, el repositorio se asume que es "OWNER/REPO". Cámbialo según corresponda.
-    GITHUB_REPO = "OWNER/REPO"
+    // Actualiza OWNER/REPO por tu repositorio real, por ejemplo: "acme-airlines/acme-airlines-commons"
+    GITHUB_REPO = "acme-airlines/acme-airlines-commons"
   }
   
   tools {
@@ -49,16 +49,23 @@ EOF
     stage('Bump version and push tag') {
       steps {
         script {
-          // Simulación: se asigna una nueva versión.
-          // En una implementación real podrías extraer la versión actual del pom.xml y calcular la siguiente.
-          env.NEW_VERSION = "1.0.1"
+          // Leer la versión actual del pom.xml y aumentar el número de parche
+          def currentVersion = sh(script: "grep -m 1 '<version>' pom.xml | sed 's/.*<version>\\([^<]*\\)<\\/version>.*/\\1/'", returnStdout: true).trim()
+          echo "Current version: ${currentVersion}"
+          def parts = currentVersion.tokenize('.')
+          def major = parts[0] as int
+          def minor = parts[1] as int
+          def patch = parts[2] as int
+          patch = patch + 1
+          env.NEW_VERSION = "${major}.${minor}.${patch}"
+          echo "New version is ${env.NEW_VERSION}"
         }
-        echo "New version is ${env.NEW_VERSION}"
+        // Configurar git y hacer push del tag usando las credenciales
         sh '''
           git config user.email "mariafvn0127@gmail.com"
           git config user.name "MariaFernanda1818"
           git tag ${NEW_VERSION}
-          git push origin ${NEW_VERSION}
+          git push https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git ${NEW_VERSION}
         '''
       }
     }
@@ -69,7 +76,7 @@ EOF
           mvn versions:set -DnewVersion=${NEW_VERSION}
           git add pom.xml
           git commit -m "Set version to ${NEW_VERSION}"
-          git push origin HEAD:main
+          git push https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git HEAD:main
         '''
       }
     }
@@ -104,7 +111,7 @@ EOF
           git config user.name "MariaFernanda1818"
           git add pom.xml
           git commit -m "Set version to ${NEW_VERSION}"
-          git push origin main
+          git push https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git main
         '''
       }
     }
