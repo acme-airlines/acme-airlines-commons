@@ -26,4 +26,10 @@ public class FlightEntity {
 
     @Column(name = "flight_end_time")
     private LocalTime flightEndTime;
+
+    @Column(name = "origin")
+    private String origin;
+
+    @Column(name = "destination")
+    private String destination;
 }
