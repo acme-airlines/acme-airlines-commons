@@ -111,18 +111,18 @@ EOF
 
     stage('Create GitHub Release') {
       steps {
-        sh '''
+        sh """
           curl -s -X POST https://api.github.com/repos/${GITHUB_REPO}/releases \\
           -H "Authorization: token ${GITHUB_TOKEN}" \\
-          -d '{
-            "tag_name": "${NEW_VERSION}",
-            "target_commitish": "main",
-            "name": "Release ${NEW_VERSION}",
-            "body": "Release ${NEW_VERSION}",
-            "draft": false,
-            "prerelease": false
-          }'
-        '''
+          -d "{
+            \\\"tag_name\\\": \\\"${NEW_VERSION}\\\",
+            \\\"target_commitish\\\": \\\"main\\\",
+            \\\"name\\\": \\\"Release ${NEW_VERSION}\\\",
+            \\\"body\\\": \\\"Release ${NEW_VERSION}\\\",
+            \\\"draft\\\": false,
+            \\\"prerelease\\\": false
+          }"
+        """
       }
     }
 
