@@ -13,11 +13,7 @@
 
 	<groupId>co.edu.uni.acme.aerolinea</groupId>
 	<artifactId>commons</artifactId>
-<<<<<<< Updated upstream
-	<version>3.4.7</version>
-=======
 	<version>3.4.9</version>
->>>>>>> Stashed changes
 	<name>commons</name>
 	<description>Commons Dependency For ACME Airline</description>
 	<packaging>jar</packaging>
