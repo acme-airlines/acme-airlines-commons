@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthResponseDTO {
 
-    //Todo dos re
+    //Todo dos retry
     private String token;
 
 }
