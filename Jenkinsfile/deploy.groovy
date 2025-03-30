@@ -89,18 +89,12 @@ EOF
     stage('Set new version in pom.xml') {
       steps {
         sh '''
-          # Actualizar el pom.xml sin generar archivos de backup
-          mvn versions:set -DnewVersion=${NEW_VERSION} -DgenerateBackupPoms=false
-          
-          # Guardar los cambios actuales en stash (incluye archivos no rastreados)
-          git stash --include-untracked
-          
           # Asegurarse de estar en la rama principal y actualizarla con los cambios remotos
           git checkout main
           git pull --rebase https://${GITHUB_USERNAME}:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git main
           
-          # Recuperar los cambios stashed
-          git stash pop || echo "No stashed changes"
+          # Actualizar el pom.xml sin generar archivos de backup
+          mvn versions:set -DnewVersion=${NEW_VERSION} -DgenerateBackupPoms=false
           
           git add pom.xml
           git commit -m "Set version to ${NEW_VERSION}" || echo "No changes to commit"
