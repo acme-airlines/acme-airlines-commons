@@ -1,10 +1,6 @@
 pipeline {
   agent { label 'ubuntu-latest' }
   
-  triggers {
-    githubPush()
-  }
-
   environment {
     // Credenciales configuradas en Jenkins (asegúrate de tener las credenciales con estos IDs)
     GITHUB_TOKEN = credentials('github-token')
