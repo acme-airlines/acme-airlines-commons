@@ -17,7 +17,19 @@ pipeline {
   stages {
     stage('Checkout Source Code') {
       steps {
-        checkout scm
+        // Realizamos un checkout explícito para asegurar que se clone el repositorio
+        checkout([$class: 'GitSCM',
+                  branches: [[name: '*/main']],  // Asegúrate de que 'main' es la rama correcta; cámbiala si es necesario.
+                  doGenerateSubmoduleConfigurations: false,
+                  extensions: [],
+                  userRemoteConfigs: [[
+                    url: "https://github.com/${GITHUB_REPO}",
+                    credentialsId: 'github-token'
+                  ]]
+        ])
+        
+        // Paso opcional para verificar que se clonó el repositorio correctamente
+        sh 'ls -la'
       }
     }
     
