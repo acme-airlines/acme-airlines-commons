@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,4 +19,11 @@ public class FeeDTO {
 
     private String valueFee;
 
+    private boolean available;
+
+    private boolean refundable;
+
+    private LocalDate availableFrom;
+
+    private LocalDate availableTo;
 }
