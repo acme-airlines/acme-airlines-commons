@@ -14,7 +14,7 @@ import java.time.LocalTime;
 @NoArgsConstructor
 public class FlightDTO {
 
-    private String flightCode;
+    private String codeFlight;
 
     private LocalDate flightDate;
 
