@@ -20,4 +20,7 @@ public class FlightCityEntity {
     @JoinColumn(name = "code_city_fk", referencedColumnName = "code_city")
     private CityEntity codeCityFk;
 
+    @Column(name = "number_flight")
+    private String numberFlight;
+
 }
