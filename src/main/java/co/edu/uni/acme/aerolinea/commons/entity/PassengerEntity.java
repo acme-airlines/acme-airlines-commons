@@ -44,4 +44,9 @@ public class PassengerEntity {
 
     @Column(name = "hash_password", nullable = false, length = 100)
     private String hashPassword;
+
+    @ManyToOne
+    @JoinColumn(name = "flight_id", nullable = false)
+    private FlightEntity codeFlightFk;
+
 }

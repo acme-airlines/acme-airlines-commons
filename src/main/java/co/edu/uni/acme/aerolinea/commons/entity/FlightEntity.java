@@ -32,4 +32,7 @@ public class FlightEntity {
 
     @Column(name = "destination")
     private String destination;
+
+    @Column(name = "capacity")
+    private Integer capacity;
 }
