@@ -17,4 +17,6 @@ public class FlightCityDTO {
 
     private CityDTO city;
 
+    private String numberFlight;
+
 }
