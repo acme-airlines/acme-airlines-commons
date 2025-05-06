@@ -1,47 +1,40 @@
 package co.edu.uni.acme.aerolinea.commons.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;                // ← import corregido
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
 
-import java.time.LocalDate;
-
-@Data
 @Entity
 @Table(name = "passenger")
+@Data
 public class PassengerEntity {
 
     @Id
-    @Column(name = "code_passenger")
-    private String codePassenger;
+    @Column(name = "code_passenger", length = 10)
+    private String code;
 
-    @Column(name = "name_passenger")
-    private String namePassenger;
+    @Column(name = "name_passenger", nullable = false, length = 50)
+    private String firstName;
 
-    @Column(name = "lastname_passenger")
-    private String lastNamePassenger;
+    @Column(name = "last_name_passenger", nullable = false, length = 50)
+    private String lastName;
 
-    @Column(name = "phone_passenger")
-    private String phonePassenger;
+    @Column(name = "document_passenger", nullable = false, length = 12)
+    private String document;
+
+    @Column(name = "age_passenger", length = 3)
+    private String age;
+
+    @Column(name = "rol_passenger", length = 30)
+    private String role;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "document_type_passenger",  referencedColumnName = "code_document_type" )
-    private DocumentTypeEntity documentTypePassengerFk;
+    @JoinColumn(name = "type_document_passenger", nullable = false)
+    private DocumentTypeEntity typeDocument;
 
-    @Column(name = "number_document_passenger")
-    private String numberDocumentPassenger;
-
-    @Column(name = "email_passenger")
-    private String emailPassenger;
-
-    @Column(name = "birth_date")
-    private LocalDate birthDate;
-
-    @Column(name = "creation_date")
-    private LocalDate creationDate;
-
-    @Column(name = "gender_passenger")
-    private String genderPassenger;
-
-    @Column(name = "hash_password", nullable = false, length = 100)
-    private String hashPassword;
 }

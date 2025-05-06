@@ -16,8 +16,8 @@ public class PaymentEntity {
     private String codePayment;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_payment_flight_passenger_fk",  referencedColumnName = "code_payment_flight_pass" )
-    private PaymentFlightPassengerEntity codePaymentFlightPassengerFk;
+    @JoinColumn(name = "code_payment_flight_passenger_fk",  referencedColumnName = "code_payment_flight_user" )
+    private PaymentFlightUserEntity codePaymentFlightPassengerFk;
 
     @Column(name = "date_payment")
     private LocalDate datePayment;

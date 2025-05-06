@@ -16,7 +16,7 @@ public class PaymentDTO {
 
     private String codePayment;
 
-    private PaymentFlightPassengerDTO codePaymentFlightPassengerDTO;
+    private PaymentFlightUserDTO codePaymentFlightUserDTO;
 
     private LocalDate datePayment;
 

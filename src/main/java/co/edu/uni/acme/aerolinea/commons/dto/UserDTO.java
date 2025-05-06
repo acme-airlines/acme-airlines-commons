@@ -11,27 +11,27 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class PassengerDTO {
+public class UserDTO {
 
-    private String codePassenger;
+    private String codeUser;
 
-    private String namePassenger;
+    private String nameUser;
 
-    private String lastNamePassenger;
+    private String lastNameUser;
 
-    private String phonePassenger;
+    private String phoneUser;
 
-    private DocumentTypeDTO documentTypePassengerFk;
+    private DocumentTypeDTO documentTypeUserFk;
 
-    private String numberDocumentPassenger;
+    private String numberDocumentUser;
 
-    private String emailPassenger;
+    private String emailUser;
 
     private LocalDate birthDate;
 
     private LocalDate creationDate;
 
-    private String genderPassenger;
+    private String genderUser;
 
     private String hashPassword;
 }

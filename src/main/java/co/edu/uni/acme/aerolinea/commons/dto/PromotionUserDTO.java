@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PromotionPassengerDTO {
+public class PromotionUserDTO {
 
-    private String codePromotionPassenger;
+    private String codePromotionUser;
 
-    private PassengerDTO codePassengerFk;
+    private UserDTO codeUserFk;
 
     private PromotionDTO codePromotionFk;
 }

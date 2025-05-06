@@ -5,16 +5,16 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "promotion_passenger")
-public class PromotionPassengerEntity {
+@Table(name = "promotion_user")
+public class PromotionUserEntity {
 
     @Id
-    @Column(name = "code_promotion_passenger")
-    private String codePromotionPassenger;
+    @Column(name = "code_promotion_user")
+    private String codePromotionUser;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "code_passenger_fk",  referencedColumnName = "code_passenger" )
-    private PassengerEntity codePassengerFk;
+    @JoinColumn(name = "code_user_fk",  referencedColumnName = "code_user" )
+    private UserEntity codeUserFk;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "code_promotion_fk",  referencedColumnName = "code_promotion" )
