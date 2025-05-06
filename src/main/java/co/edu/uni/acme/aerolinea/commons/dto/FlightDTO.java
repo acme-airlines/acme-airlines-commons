@@ -21,4 +21,6 @@ public class FlightDTO {
     private LocalTime flightStartTime;
 
     private LocalTime flightEndTime;
+
+    private Integer capacity;
 }

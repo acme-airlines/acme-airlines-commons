@@ -37,4 +37,6 @@ public class PassengerEntity {
     @JoinColumn(name = "type_document_passenger", nullable = false)
     private DocumentTypeEntity typeDocument;
 
+
+
 }
