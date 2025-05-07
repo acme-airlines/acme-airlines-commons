@@ -50,6 +50,9 @@ public class PassengerEntity {
     @Column(name = "relation_ship_passenger", length = 30)
     private String relationship;
 
+    @Column(name = "genre")
+    private String genre;
+
     // Relación hacia otro pasajero como acompañante
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "companion_passenger", nullable = true)

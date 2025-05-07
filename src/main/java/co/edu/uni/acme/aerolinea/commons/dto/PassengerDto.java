@@ -37,4 +37,6 @@ public class PassengerDto {
 
     private FeeDTO fee;
 
+    private String genre;
+
 }
