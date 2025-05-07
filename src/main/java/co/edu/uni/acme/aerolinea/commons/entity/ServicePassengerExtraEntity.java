@@ -12,19 +12,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class ServicePassengerExtraEntity {
 
-    @Embeddable
-    @Data
-    @NoArgsConstructor
-    public static class Id implements Serializable {
-        @Column(name = "code_passenger", length = 10)
-        private String codePassenger;
-
-        @Column(name = "code_service", length = 10)
-        private String codeService;
-    }
-
     @EmbeddedId
-    private Id id;
+    private ServicePassengerExtraId id;
 
     @MapsId("codePassenger")
     @ManyToOne(fetch = FetchType.LAZY)
