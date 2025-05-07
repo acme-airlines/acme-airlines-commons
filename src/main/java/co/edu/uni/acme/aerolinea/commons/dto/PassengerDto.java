@@ -1,16 +1,12 @@
 package co.edu.uni.acme.aerolinea.commons.dto;
 
-import co.edu.uni.acme.aerolinea.commons.entity.FeeEntity;
-import co.edu.uni.acme.aerolinea.commons.entity.PassengerEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
 
 @Data
+@Builder
 public class PassengerDto {
 
     private String code;
