@@ -17,6 +17,4 @@ public class FeeServiceTypeDTO {
 
     private String status;
 
-    private Long quantity;
-
 }

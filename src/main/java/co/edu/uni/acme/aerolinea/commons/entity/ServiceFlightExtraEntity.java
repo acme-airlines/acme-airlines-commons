@@ -23,4 +23,7 @@ public class ServiceFlightExtraEntity {
     @Column(name = "status")
     private String status;
 
+    @Column(name = "quantity")
+    private Long quantity;
+
 }

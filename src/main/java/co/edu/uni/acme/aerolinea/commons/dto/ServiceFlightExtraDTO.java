@@ -18,4 +18,7 @@ public class ServiceFlightExtraDTO {
     private FlightDTO codeFlightFk;
 
     private String status;
+
+    private Long quantity;
+
 }
