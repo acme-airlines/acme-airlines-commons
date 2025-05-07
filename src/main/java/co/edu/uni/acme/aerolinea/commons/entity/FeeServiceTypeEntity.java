@@ -18,4 +18,8 @@ public class FeeServiceTypeEntity {
 
      @Column(name = "status")
     private String status;
+
+    @Column(name = "quantity")
+     private Long quantity;
+
 }
