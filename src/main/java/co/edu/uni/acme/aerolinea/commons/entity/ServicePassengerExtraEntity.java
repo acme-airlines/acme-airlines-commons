@@ -25,4 +25,7 @@ public class ServicePassengerExtraEntity {
     @JoinColumn(name = "code_service")
     private ServiceEntity service;
 
+    @Column(name = "quantity")
+    private Long quantity;
+
 }

@@ -11,4 +11,7 @@ public class ServicePassengerExtraDto {
     private PassengerDto passenger;
 
     private ServiceDTO service;
+
+    private Long quantity;
+
 }
