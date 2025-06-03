@@ -1,6 +1,7 @@
 package co.edu.uni.acme.aerolinea.commons.entity;
 
 import co.edu.uni.acme.aerolinea.commons.utils.enums.DocumentTypeEnum;
+import co.edu.uni.acme.aerolinea.commons.utils.helper.DocumentTypeConverter;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,6 +15,6 @@ public class DocumentTypeEntity {
     private String codeTypeDocument;
 
     @Column(name = "name_document_type")
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = DocumentTypeConverter.class)
     private DocumentTypeEnum nameDocumentType;
 }
