@@ -36,4 +36,7 @@ public class PaymentCardEntity {
     @JoinColumn(name = "code_user_fk", referencedColumnName = "code_user", nullable = false)
     private UserEntity user;
 
+    @Column(name = "available_amount", nullable = false)
+    private Double availableAmount;
+
 }

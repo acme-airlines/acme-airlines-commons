@@ -16,4 +16,6 @@ public class PaymentCardDto {
     private Integer expiryYear;
     private CardTypeDto cardType;
     private UserDTO user;
+    private Double availableAmount;
+
 }
