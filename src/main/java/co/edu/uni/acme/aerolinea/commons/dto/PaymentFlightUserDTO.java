@@ -1,5 +1,6 @@
 package co.edu.uni.acme.aerolinea.commons.dto;
 
+import co.edu.uni.acme.aerolinea.commons.entity.PassengerEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +17,7 @@ public class PaymentFlightUserDTO {
     private FlightDTO codeFlightFk;
 
     private UserDTO codeUserFk;
+
+    private PassengerDto codePassengerFk;
+
 }

@@ -19,4 +19,9 @@ public class PaymentFlightUserEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "code_user_fk",  referencedColumnName = "code_user" )
     private UserEntity codeUserFk;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "code_passenger_fk",  referencedColumnName = "code" )
+    private PassengerEntity codePassengerFk;
+
 }
